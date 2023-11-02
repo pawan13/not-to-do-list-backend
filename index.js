@@ -1,5 +1,18 @@
 const express = require("express");
+const cors = require("cors");
+
 const app = express();
+app.use(
+  cors({
+    origin: [
+      "http://localhost:3000",
+      "http://localhost:3001",
+      "http://localhost:3002",
+    ],
+    headers: ["Content-Type", "Authorization"],
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
+  })
+);
 require("dotenv").config();
 const connectdb = require("./src/config/mongodb");
 
